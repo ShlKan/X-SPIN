@@ -1,0 +1,169 @@
+Execute the following commands:
+
+spin_x —o3 a giop3.nomig.pr
+
+/*POR for LTL+X*/
+
+gcc -o pan pan.c
+
+./pan -a
+
+result:
+
+Depth=     410 States=    1e+06 Transitions= 3.56e+06 Memory=   485.761	t=     18.5 R=   5e+04
+Depth=     410 States=    2e+06 Transitions= 7.25e+06 Memory=   860.175	t=     37.4 R=   5e+04
+
+(Spin Version 6.4.3 -- 16 December 2014)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 720 byte, depth reached 410, errors: 0
+  2308808 states, stored (2.89638e+06 visited)
+  7681944 states, matched
+ 10578322 transitions (= visited+matched)
+   815593 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 1521090
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 0
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 1375288
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+hash conflicts:    262547 (resolved)
+
+Stats on memory usage (in Megabytes):
+ 1646.984	equivalent memory usage for states (stored*(State-vector + overhead))
+ 1111.851	actual memory usage for states (compression: 67.51%)
+         	state-vector as stored = 477 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+    1.029	memory lost to fragmentation
+ 1239.374	total actual memory usage
+
+
+unreached in proctype User
+	giop3.nomig.pr:197, state 29, "printf('Request failed: user exception\n')"
+	giop3.nomig.pr:204, state 33, "printf('Request failed: object does not exist\n')"
+	(2 of 36 states)
+unreached in proctype GIOPClient
+	giop3.nomig.pr:308, state 36, "D_STEP308"
+	giop3.nomig.pr:312, state 37, "lout!Request,objRefs[reqId].port,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:399, state 86, "-end-"
+	(3 of 86 states)
+unreached in proctype Server
+	giop3.nomig.pr:435, state 7, "-end-"
+	(1 of 7 states)
+unreached in proctype GIOPAgent
+	giop3.nomig.pr:469, state 6, "registered[objKey] = clPort"
+	giop3.nomig.pr:513, state 23, "D_STEP513"
+	giop3.nomig.pr:522, state 29, "D_STEP522"
+	giop3.nomig.pr:511, state 30, "((registered[objKey]==255))"
+	giop3.nomig.pr:511, state 30, "else"
+	giop3.nomig.pr:531, state 32, "lout!Reply,clPort,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:620, state 75, "-end-"
+	(6 of 75 states)
+unreached in proctype transport
+	giop3.nomig.pr:720, state 37, "-end-"
+	(1 of 37 states)
+unreached in init
+	(0 of 12 states)
+unreached in claim never_0
+	./v3.never:21, state 13, "-end-"
+	(1 of 13 states)
+
+pan: elapsed time 54.9 seconds
+pan: rate 52766.952 states/second
+/*without POR*/
+
+gcc -DNOREDUCE -o pan pan.c
+
+./pan -a
+
+/*result*/
+Depth=     405 States=    1e+06 Transitions= 3.93e+06 Memory=   383.710	t=     20.3 R=   5e+04
+Depth=     410 States=    2e+06 Transitions= 9.14e+06 Memory=   784.687	t=     46.5 R=   4e+04
+Depth=     410 States=    3e+06 Transitions= 1.36e+07 Memory=  1202.558	t=     69.3 R=   4e+04
+
+(Spin Version 6.4.3 -- 16 December 2014)
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 720 byte, depth reached 410, errors: 0
+  2308808 states, stored (3.09653e+06 visited)
+ 10989574 states, matched
+ 14086100 transitions (= visited+matched)
+  1066513 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 1521090
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 0
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 1575436
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+hash conflicts:    361652 (resolved)
+
+Stats on memory usage (in Megabytes):
+ 1646.984	equivalent memory usage for states (stored*(State-vector + overhead))
+ 1111.851	actual memory usage for states (compression: 67.51%)
+         	state-vector as stored = 477 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+    1.029	memory lost to fragmentation
+ 1239.374	total actual memory usage
+
+
+unreached in proctype User
+	giop3.nomig.pr:197, state 29, "printf('Request failed: user exception\n')"
+	giop3.nomig.pr:204, state 33, "printf('Request failed: object does not exist\n')"
+	(2 of 36 states)
+unreached in proctype GIOPClient
+	giop3.nomig.pr:308, state 36, "D_STEP308"
+	giop3.nomig.pr:312, state 37, "lout!Request,objRefs[reqId].port,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:399, state 86, "-end-"
+	(3 of 86 states)
+unreached in proctype Server
+	giop3.nomig.pr:435, state 7, "-end-"
+	(1 of 7 states)
+unreached in proctype GIOPAgent
+	giop3.nomig.pr:469, state 6, "registered[objKey] = clPort"
+	giop3.nomig.pr:513, state 23, "D_STEP513"
+	giop3.nomig.pr:522, state 29, "D_STEP522"
+	giop3.nomig.pr:511, state 30, "((registered[objKey]==255))"
+	giop3.nomig.pr:511, state 30, "else"
+	giop3.nomig.pr:531, state 32, "lout!Reply,clPort,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:620, state 75, "-end-"
+	(6 of 75 states)
+unreached in proctype transport
+	giop3.nomig.pr:720, state 37, "-end-"
+	(1 of 37 states)
+unreached in init
+	(0 of 12 states)
+unreached in claim never_0
+	./v3.never:21, state 13, "-end-"
+	(1 of 13 states)
+
+pan: elapsed time 71.7 seconds
+pan: rate  43217.39 states/second

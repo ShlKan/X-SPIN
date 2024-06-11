@@ -1,0 +1,267 @@
+Execute the following commands:
+
+spin_x -o3 -a giop3.pr
+
+/*POR for LTL+X*/
+
+gcc -o pan pan.c
+
+./pan -a
+
+Depth=     525 States=    1e+06 Transitions= 1.72e+06 Memory=   634.687	t=     8.65 R=   1e+05
+Depth=     634 States=    2e+06 Transitions= 3.47e+06 Memory=  1140.644	t=     17.5 R=   1e+05
+Depth=     634 States=    3e+06 Transitions= 5.41e+06 Memory=  1646.698	t=     27.6 R=   1e+05
+Depth=     634 States=    4e+06 Transitions= 7.43e+06 Memory=  2152.655	t=     40.3 R=   1e+05
+Depth=     634 States=    5e+06 Transitions=  9.6e+06 Memory=  2658.710	t=     53.4 R=   9e+04
+Depth=     634 States=    6e+06 Transitions= 1.16e+07 Memory=  3164.667	t=     67.4 R=   9e+04
+pan:1: acceptance cycle (at depth 636)
+pan: wrote giop3.pr.trail
+
+(Spin Version 6.4.3 -- 16 December 2014)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 756 byte, depth reached 637, errors: 1
+  6211324 states, stored
+  5861413 states, matched
+ 12072737 transitions (= stored+matched)
+       37 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 0
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 0
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 0
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+states checked against BA state 14 is: 0
+states checked against BA state 15 is: 0
+states checked against BA state 16 is: 0
+states checked against BA state 17 is: 0
+states checked against BA state 18 is: 0
+states checked against BA state 19 is: 0
+states checked against BA state 20 is: 0
+states checked against BA state 21 is: 1
+states checked against BA state 22 is: 0
+states checked against BA state 23 is: 0
+states checked against BA state 24 is: 0
+states checked against BA state 25 is: 0
+states checked against BA state 26 is: 0
+states checked against BA state 27 is: 0
+states checked against BA state 28 is: 0
+states checked against BA state 29 is: 21
+states checked against BA state 30 is: 0
+states checked against BA state 31 is: 0
+states checked against BA state 32 is: 0
+states checked against BA state 33 is: 0
+states checked against BA state 34 is: 0
+states checked against BA state 35 is: 0
+states checked against BA state 36 is: 0
+states checked against BA state 37 is: 0
+states checked against BA state 38 is: 0
+states checked against BA state 39 is: 0
+states checked against BA state 40 is: 0
+states checked against BA state 41 is: 0
+states checked against BA state 42 is: 0
+states checked against BA state 43 is: 0
+states checked against BA state 44 is: 0
+states checked against BA state 45 is: 0
+states checked against BA state 46 is: 0
+states checked against BA state 47 is: 0
+states checked against BA state 48 is: 0
+states checked against BA state 49 is: 0
+states checked against BA state 50 is: 0
+states checked against BA state 51 is: 0
+states checked against BA state 52 is: 0
+states checked against BA state 53 is: 0
+states checked against BA state 54 is: 0
+states checked against BA state 55 is: 0
+states checked against BA state 56 is: 0
+states checked against BA state 57 is: 0
+states checked against BA state 58 is: 0
+states checked against BA state 59 is: 0
+states checked against BA state 60 is: 0
+states checked against BA state 61 is: 0
+states checked against BA state 62 is: 0
+states checked against BA state 63 is: 0
+states checked against BA state 64 is: 0
+states checked against BA state 65 is: 0
+states checked against BA state 66 is: 0
+states checked against BA state 67 is: 0
+states checked against BA state 68 is: 0
+states checked against BA state 69 is: 0
+states checked against BA state 70 is: 0
+states checked against BA state 71 is: 0
+states checked against BA state 72 is: 0
+states checked against BA state 73 is: 0
+states checked against BA state 74 is: 0
+states checked against BA state 75 is: 0
+states checked against BA state 76 is: 0
+states checked against BA state 77 is: 0
+states checked against BA state 78 is: 0
+states checked against BA state 79 is: 0
+states checked against BA state 80 is: 0
+states checked against BA state 81 is: 0
+states checked against BA state 82 is: 0
+states checked against BA state 83 is: 0
+states checked against BA state 84 is: 0
+states checked against BA state 85 is: 0
+states checked against BA state 86 is: 0
+states checked against BA state 87 is: 0
+states checked against BA state 88 is: 0
+states checked against BA state 89 is: 0
+states checked against BA state 90 is: 0
+states checked against BA state 91 is: 0
+states checked against BA state 92 is: 0
+states checked against BA state 93 is: 0
+states checked against BA state 94 is: 0
+states checked against BA state 95 is: 0
+states checked against BA state 96 is: 0
+states checked against BA state 97 is: 0
+states checked against BA state 98 is: 0
+states checked against BA state 99 is: 0
+states checked against BA state 100 is: 0
+states checked against BA state 101 is: 0
+states checked against BA state 102 is: 0
+states checked against BA state 103 is: 0
+states checked against BA state 104 is: 0
+states checked against BA state 105 is: 0
+states checked against BA state 106 is: 0
+states checked against BA state 107 is: 0
+states checked against BA state 108 is: 0
+states checked against BA state 109 is: 0
+states checked against BA state 110 is: 0
+states checked against BA state 111 is: 0
+states checked against BA state 112 is: 0
+states checked against BA state 113 is: 0
+states checked against BA state 114 is: 0
+states checked against BA state 115 is: 0
+states checked against BA state 116 is: 0
+states checked against BA state 117 is: 0
+states checked against BA state 118 is: 0
+states checked against BA state 119 is: 0
+states checked against BA state 120 is: 0
+states checked against BA state 121 is: 0
+states checked against BA state 122 is: 0
+states checked against BA state 123 is: 0
+states checked against BA state 124 is: 0
+states checked against BA state 125 is: 1748784
+states checked against BA state 126 is: 0
+states checked against BA state 127 is: 0
+states checked against BA state 128 is: 0
+states checked against BA state 129 is: 0
+states checked against BA state 130 is: 0
+states checked against BA state 131 is: 0
+states checked against BA state 132 is: 893016
+states checked against BA state 133 is: 0
+states checked against BA state 134 is: 0
+states checked against BA state 135 is: 0
+states checked against BA state 136 is: 0
+states checked against BA state 137 is: 0
+states checked against BA state 138 is: 0
+states checked against BA state 139 is: 0
+states checked against BA state 140 is: 0
+states checked against BA state 141 is: 0
+states checked against BA state 142 is: 0
+states checked against BA state 143 is: 2655612
+states checked against BA state 144 is: 0
+states checked against BA state 145 is: 0
+states checked against BA state 146 is: 0
+states checked against BA state 147 is: 0
+states checked against BA state 148 is: 0
+states checked against BA state 149 is: 0
+states checked against BA state 150 is: 0
+states checked against BA state 151 is: 0
+states checked against BA state 152 is: 913665
+states checked against BA state 153 is: 0
+states checked against BA state 154 is: 0
+states checked against BA state 155 is: 0
+states checked against BA state 156 is: 0
+states checked against BA state 157 is: 0
+states checked against BA state 158 is: 0
+states checked against BA state 159 is: 0
+states checked against BA state 160 is: 0
+states checked against BA state 161 is: 0
+states checked against BA state 162 is: 0
+states checked against BA state 163 is: 0
+states checked against BA state 164 is: 0
+states checked against BA state 165 is: 0
+states checked against BA state 166 is: 0
+states checked against BA state 167 is: 0
+states checked against BA state 168 is: 0
+states checked against BA state 169 is: 0
+states checked against BA state 170 is: 0
+states checked against BA state 171 is: 0
+states checked against BA state 172 is: 0
+states checked against BA state 173 is: 0
+states checked against BA state 174 is: 0
+states checked against BA state 175 is: 0
+states checked against BA state 176 is: 0
+states checked against BA state 177 is: 0
+states checked against BA state 178 is: 0
+states checked against BA state 179 is: 0
+states checked against BA state 180 is: 0
+states checked against BA state 181 is: 225
+states checked against BA state 182 is: 0
+states checked against BA state 183 is: 0
+states checked against BA state 184 is: 0
+states checked against BA state 185 is: 0
+states checked against BA state 186 is: 0
+states checked against BA state 187 is: 0
+states checked against BA state 188 is: 0
+states checked against BA state 189 is: 0
+states checked against BA state 190 is: 0
+states checked against BA state 191 is: 0
+states checked against BA state 192 is: 0
+states checked against BA state 193 is: 0
+states checked against BA state 194 is: 0
+states checked against BA state 195 is: 0
+states checked against BA state 196 is: 0
+states checked against BA state 197 is: 0
+states checked against BA state 198 is: 0
+states checked against BA state 199 is: 0
+states checked against BA state 200 is: 0
+states checked against BA state 201 is: 0
+states checked against BA state 202 is: 0
+states checked against BA state 203 is: 0
+states checked against BA state 204 is: 0
+states checked against BA state 205 is: 0
+states checked against BA state 206 is: 0
+states checked against BA state 207 is: 0
+states checked against BA state 208 is: 0
+hash conflicts:    465312 (resolved)
+
+Stats on memory usage (in Megabytes):
+ 4644.087	equivalent memory usage for states (stored*(State-vector + overhead))
+ 3158.290	actual memory usage for states (compression: 68.01%)
+         	state-vector as stored = 505 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+   15.250	memory lost to fragmentation
+ 3271.601	total actual memory usage
+
+
+
+pan: elapsed time 71.2 seconds
+pan: rate 87176.477 states/second
+/*without POR*/
+
+gcc -DNOREDUCE -o pan pan.c
+
+./pan -a
+
+/*result*/
+
+execute without result in 1 hour.

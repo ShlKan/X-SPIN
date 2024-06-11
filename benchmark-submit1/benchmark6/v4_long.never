@@ -1,0 +1,140 @@
+#define r	(User[Pid[6]]@NoException)
+#define s	(User[Pid[6]]@URequestSent)
+#define p	(Server[Pid[8]]@User6Processed1 || Server[Pid[9]]@User6Processed1 || Server[Pid[8]]@User6Processed2 || Server[Pid[9]]@User6Processed2)
+
+	/*
+	 * Formula As Typed: [](<>r -> ([]((s && <>r) -> ( !r U p )) && [] (( s && <> r) -> (( !p && !r) U ( r || (( p &&  ! r) U ( r || ( ! p U r))))))))
+	 * The Never Claim Below Corresponds
+	 * To The Negated Formula ! ([](<> r -> ([]((s && <> r) -> X( ! r U p )) && [] (( s && <> r) -> (( ! p && ! r) U ( r || (( p &&  ! r) U ( r || ( ! p U r)))))))))
+	 * (formalizing violations of the original)
+	 */
+
+never  {    /* ! ([](<> r -> ([]((s && <> r) -> X( ! r U p )) && [] (( s && <> r) -> (( ! p && ! r) U ( r || (( p &&  ! r) U ( r || ( ! p U r))))))))) */
+T0_init @ :
+	do
+	:: ((r) && (s)) -> goto accept_S1401
+	:: ((r) && (s)) -> goto accept_S2115
+	:: ((r)) -> goto T2_S2113
+	:: ((s)) -> goto T0_S2115
+	:: (((! ((r)) && (p) && (s)) || (! ((r)) && (s)))) -> goto T0_S2442
+	:: (((! (( ! p && ! r)) && ! ((r)) && (p) && (s)) || (! (( ! p && ! r)) && ! ((r)) && (s)))) -> goto T0_S2582
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (s)) -> goto T0_S2412
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (p) && (s)) -> goto T0_S2439
+	:: (1) -> goto T0_S2438
+	:: (1) -> goto T0_S1
+	od;
+accept_S1401 :
+	do
+	:: (! ((p))) -> goto accept_S1401
+	:: atomic { (! ((p)) && (r)) -> assert(!(! ((p)) && (r))) }
+	od;
+accept_S2115 :
+	do
+	:: (! ((p)) && (r)) -> goto accept_S1401
+	:: atomic { (! ((p)) && (r)) -> assert(!(! ((p)) && (r))) }
+	:: (! ((p))) -> goto T0_S2115
+	:: (! ((p)) && (r)) -> goto T0_S2439
+	od;
+accept_S2439 :
+	do
+	:: atomic { ((r)) -> assert(!((r))) }
+	:: (1) -> goto T0_S2439
+	od;
+T2_S2115 :
+	do
+	:: (! ((p)) && (r)) -> goto accept_S1401
+	:: atomic { (! ((p)) && (r)) -> assert(!(! ((p)) && (r))) }
+	:: (! ((p))) -> goto T2_S2115
+	:: (! ((p)) && (r)) -> goto accept_S2439
+	od;
+T2_S2412 :
+	do
+	:: (! ((r))) -> goto T2_S2412
+	:: (! ((r)) && (p)) -> goto T2_S2439
+	od;
+T2_S2113 @ :
+	do
+	:: ((r) && (s)) -> goto accept_S1401
+	:: ((s)) -> goto T2_S2115
+	:: (((! ((r)) && (p) && (s)) || (! ((r)) && (s)))) -> goto T2_S2442
+	:: (((! (( ! p && ! r)) && ! ((r)) && (p) && (s)) || (! (( ! p && ! r)) && ! ((r)) && (s)))) -> goto T2_S2582
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (s)) -> goto T2_S2412
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (p) && (s)) -> goto T2_S2439
+	:: (1) -> goto T2_S2113
+	od;
+T2_S2442 :
+	do
+	:: (! ((r))) -> goto T2_S2442
+	:: (! (( ! p && ! r)) && ! ((r))) -> goto T2_S2582
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r))) -> goto T2_S2412
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (p)) -> goto T2_S2439
+	od;
+T2_S2582 :
+	do
+	:: (! ((r))) -> goto T2_S2582
+	:: (! (( p &&  ! r)) && ! ((r))) -> goto T2_S2412
+	:: (! (( p &&  ! r)) && ! ((r)) && (p)) -> goto T2_S2439
+	od;
+T2_S2439 :
+	do
+	:: atomic { ((r)) -> assert(!((r))) }
+	:: (1) -> goto T2_S2439
+	od;
+T0_S2115 :
+	do
+	:: (! ((p)) && (r)) -> goto accept_S1401
+	:: atomic { (! ((p)) && (r)) -> assert(!(! ((p)) && (r))) }
+	:: (! ((p))) -> goto T0_S2115
+	:: (! ((p)) && (r)) -> goto accept_S2439
+	od;
+T0_S2412 :
+	do
+	:: (! ((r))) -> goto T0_S2412
+	:: (! ((r)) && (p)) -> goto T0_S2439
+	od;
+T0_S2442 :
+	do
+	:: (! ((r))) -> goto T0_S2442
+	:: (! (( ! p && ! r)) && ! ((r))) -> goto T0_S2582
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r))) -> goto T0_S2412
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (p)) -> goto T0_S2439
+	od;
+T0_S2582 :
+	do
+	:: (! ((r))) -> goto T0_S2582
+	:: (! (( p &&  ! r)) && ! ((r))) -> goto T0_S2412
+	:: (! (( p &&  ! r)) && ! ((r)) && (p)) -> goto T0_S2439
+	od;
+T0_S2439 :
+	do
+	:: atomic { ((r)) -> assert(!((r))) }
+	:: (1) -> goto T0_S2439
+	od;
+T0_S2438 @ :
+	do
+	:: ((r) && (s)) -> goto accept_S1401
+	:: ((s)) -> goto T0_S2115
+	:: (((! ((r)) && (p) && (s)) || (! ((r)) && (s)))) -> goto T0_S2442
+	:: (((! (( ! p && ! r)) && ! ((r)) && (p) && (s)) || (! (( ! p && ! r)) && ! ((r)) && (s)))) -> goto T0_S2582
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (s)) -> goto T0_S2412
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (p) && (s)) -> goto T0_S2439
+	:: ((r) && (s)) -> goto accept_S2115
+	:: ((r)) -> goto T2_S2113
+	:: (1) -> goto T0_S2438
+	od;
+T0_S1 @ :
+	do
+	:: ((r) && (s)) -> goto accept_S1401
+	:: ((r) && (s)) -> goto accept_S2115
+	:: ((r)) -> goto T2_S2113
+	:: ((s)) -> goto T0_S2115
+	:: (((! ((r)) && (p) && (s)) || (! ((r)) && (s)))) -> goto T0_S2442
+	:: (((! (( ! p && ! r)) && ! ((r)) && (p) && (s)) || (! (( ! p && ! r)) && ! ((r)) && (s)))) -> goto T0_S2582
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (s)) -> goto T0_S2412
+	:: (! (( ! p && ! r)) && ! (( p &&  ! r)) && ! ((r)) && (p) && (s)) -> goto T0_S2439
+	:: (1) -> goto T0_S2438
+	:: (1) -> goto T0_S1
+	od;
+accept_all:
+	skip
+}

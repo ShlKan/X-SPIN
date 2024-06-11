@@ -1,0 +1,153 @@
+Execute the following commands:
+
+spin_x -o3 -a giop3.nomig.pr
+
+/*POR for LTL+X*/
+
+gcc -o pan pan.c
+
+./pan -a
+
+result:
+pan:1: acceptance cycle (at depth 413)
+pan: wrote giop3.v10.nomig.pr.trail
+
+(Spin Version 6.4.3 -- 16 December 2014)
+Warning: Search not completed
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 756 byte, depth reached 414, errors: 1
+     6899 states, stored
+     2951 states, matched
+     9850 transitions (= stored+matched)
+       38 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 0
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 43
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 0
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+states checked against BA state 14 is: 0
+states checked against BA state 15 is: 141
+states checked against BA state 16 is: 0
+states checked against BA state 17 is: 0
+states checked against BA state 18 is: 0
+states checked against BA state 19 is: 0
+states checked against BA state 20 is: 0
+states checked against BA state 21 is: 0
+states checked against BA state 22 is: 6715
+states checked against BA state 23 is: 0
+states checked against BA state 24 is: 0
+states checked against BA state 25 is: 0
+states checked against BA state 26 is: 0
+states checked against BA state 27 is: 0
+states checked against BA state 28 is: 0
+states checked against BA state 29 is: 0
+states checked against BA state 30 is: 0
+states checked against BA state 31 is: 0
+states checked against BA state 32 is: 0
+states checked against BA state 33 is: 0
+states checked against BA state 34 is: 0
+hash conflicts:         2 (resolved)
+
+Stats on memory usage (in Megabytes):
+    5.158	equivalent memory usage for states (stored*(State-vector + overhead))
+    3.681	actual memory usage for states (compression: 71.36%)
+         	state-vector as stored = 532 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  132.147	total actual memory usage
+
+
+
+pan: elapsed time 0.06 seconds
+pan: rate 114983.33 states/second
+
+
+/*without POR*/
+
+gcc -DNOREDUCE -o pan pan.c
+
+./pan -a
+
+/*result*/
+pan:1: acceptance cycle (at depth 413)
+pan: wrote giop3.v10.nomig.pr.trail
+
+(Spin Version 6.4.3 -- 16 December 2014)
+Warning: Search not completed
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 756 byte, depth reached 414, errors: 1
+    37661 states, stored
+    64928 states, matched
+   102589 transitions (= stored+matched)
+       38 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 0
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 43
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 0
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+states checked against BA state 14 is: 0
+states checked against BA state 15 is: 141
+states checked against BA state 16 is: 0
+states checked against BA state 17 is: 0
+states checked against BA state 18 is: 0
+states checked against BA state 19 is: 0
+states checked against BA state 20 is: 0
+states checked against BA state 21 is: 0
+states checked against BA state 22 is: 37477
+states checked against BA state 23 is: 0
+states checked against BA state 24 is: 0
+states checked against BA state 25 is: 0
+states checked against BA state 26 is: 0
+states checked against BA state 27 is: 0
+states checked against BA state 28 is: 0
+states checked against BA state 29 is: 0
+states checked against BA state 30 is: 0
+states checked against BA state 31 is: 0
+states checked against BA state 32 is: 0
+states checked against BA state 33 is: 0
+states checked against BA state 34 is: 0
+hash conflicts:        79 (resolved)
+
+Stats on memory usage (in Megabytes):
+   28.158	equivalent memory usage for states (stored*(State-vector + overhead))
+   19.381	actual memory usage for states (compression: 68.83%)
+         	state-vector as stored = 512 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+  147.772	total actual memory usage
+
+
+
+pan: elapsed time 0.56 seconds
+pan: rate 67251.786 states/second

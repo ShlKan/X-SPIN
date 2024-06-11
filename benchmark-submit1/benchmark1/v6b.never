@@ -1,0 +1,55 @@
+#define t	(srequested[0] == TRUE)
+#define p	((GIOPAgent[Pid[4]]@SReplyReceived  || GIOPAgent[Pid[5]]@SReplyReceived) && (sreply_reqId == 0))
+
+	/*
+	 * Formula As Typed: []  (  ! t -> ( ( !p  U t )  || []  !p ) )
+	 * The Never Claim Below Corresponds
+	 * To The Negated Formula ! ([]  (  ! t -> ( ( !p  U t )  || []  !p ) ))
+         * To The Negated Formula ! ([]  (  ! t -> X ( ( ! p  U t )  || []  ! p ) ))
+	 * (formalizing violations of the original)
+	 */
+
+never  {    /* ! ([]  (  ! t -> X ( ( ! p  U t )  || []  ! p ) )) */
+T0_init @:
+	do
+	:: (! ((t))) -> goto accept_S9
+	:: (1) -> goto T0_init
+	od;
+accept_S6 :
+	do
+	:: (! ((t))) -> goto accept_S6
+	:: atomic { (! ((t)) && (p)) -> assert(!(! ((t)) && (p))) }
+	od;
+accept_S9 :
+	do
+	:: (! ((t)) && (p)) -> goto accept_S6
+	:: atomic { (! ((t)) && (p)) -> assert(!(! ((t)) && (p))) }
+	:: (! ((t))) -> goto T0_S9
+	:: (! ((t)) && (p)) -> goto T0_S15
+	od;
+accept_S15 :
+	do
+	:: atomic { ((p)) -> assert(!((p))) }
+	:: (1) -> goto T0_S15
+	od;
+T0_S9 :
+	do
+	:: (! ((t)) && (p)) -> goto accept_S6
+	:: atomic { (! ((t)) && (p)) -> assert(!(! ((t)) && (p))) }
+	:: (! ((t))) -> goto T0_S9
+	:: (! ((t)) && (p)) -> goto accept_S15
+	od;
+T0_S15 :
+	do
+	:: atomic { ((p)) -> assert(!((p))) }
+	:: (1) -> goto T0_S15
+	od;
+accept_all:
+	skip
+}
+
+
+
+
+/*=========================================================================*/
+

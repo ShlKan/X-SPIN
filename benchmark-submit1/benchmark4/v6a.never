@@ -1,0 +1,21 @@
+#define p (GIOPAgent[Pid[4]]@SRequestSent && srequest_reqId == 0)
+#define q (GIOPAgent[Pid[4]]@SReplyReceived && sreply_reqId == 0)
+
+	/*
+	 * Formula As Typed: [](p -> X <> q)
+	 * The Never Claim Below Corresponds
+	 * To The Negated Formula !([](p -> X <> q))
+	 * (formalizing violations of the original)
+	 */
+
+never  {    /* ! ([] (p -> X (<> q))) */
+T0_init @ :
+	do
+	:: ((p)) -> goto accept_S3
+	:: (1) -> goto T0_init
+	od;
+accept_S3 :
+	do
+	:: (! ((q))) -> goto accept_S3
+	od;
+}

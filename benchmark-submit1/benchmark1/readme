@@ -1,0 +1,289 @@
+Execute the following commands:
+
+spin_x -o3 -a giop3.nomig.pr
+
+/*POR for LTL+X*/
+
+gcc -o pan pan.c
+
+./pan -a
+
+
+/*result:*/
+Depth=     404 States=    1e+06 Transitions= 2.56e+06 Memory=   423.163	t=     13.1 R=   8e+04
+Depth=     410 States=    2e+06 Transitions= 5.64e+06 Memory=   732.733	t=     28.6 R=   7e+04
+Depth=     410 States=    3e+06 Transitions= 8.66e+06 Memory=  1041.815	t=       44 R=   7e+04
+Depth=     410 States=    4e+06 Transitions= 1.17e+07 Memory=  1351.288	t=     59.5 R=   7e+04
+Depth=     410 States=    5e+06 Transitions= 1.47e+07 Memory=  1660.272	t=       75 R=   7e+04
+Depth=     410 States=    6e+06 Transitions= 1.77e+07 Memory=  1969.257	t=     90.4 R=   7e+04
+
+(Spin Version 6.4.3 -- 16 December 2014)
+	+ Partial Order Reduction
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 736 byte, depth reached 410, errors: 0
+  4030471 states, stored (6.53985e+06 visited)
+ 12965292 states, matched
+ 19505144 transitions (= visited+matched)
+  1427674 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 1521090
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 0
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 0
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+states checked against BA state 14 is: 0
+states checked against BA state 15 is: 0
+states checked against BA state 16 is: 0
+states checked against BA state 17 is: 0
+states checked against BA state 18 is: 0
+states checked against BA state 19 is: 0
+states checked against BA state 20 is: 0
+states checked against BA state 21 is: 0
+states checked against BA state 22 is: 0
+states checked against BA state 23 is: 0
+states checked against BA state 24 is: 0
+states checked against BA state 25 is: 3042178
+states checked against BA state 26 is: 0
+states checked against BA state 27 is: 0
+states checked against BA state 28 is: 0
+states checked against BA state 29 is: 0
+states checked against BA state 30 is: 0
+states checked against BA state 31 is: 0
+states checked against BA state 32 is: 0
+states checked against BA state 33 is: 0
+states checked against BA state 34 is: 0
+states checked against BA state 35 is: 0
+states checked against BA state 36 is: 0
+states checked against BA state 37 is: 0
+states checked against BA state 38 is: 0
+states checked against BA state 39 is: 0
+states checked against BA state 40 is: 0
+states checked against BA state 41 is: 0
+states checked against BA state 42 is: 0
+states checked against BA state 43 is: 0
+states checked against BA state 44 is: 0
+states checked against BA state 45 is: 1976584
+states checked against BA state 46 is: 0
+states checked against BA state 47 is: 0
+states checked against BA state 48 is: 0
+states checked against BA state 49 is: 0
+states checked against BA state 50 is: 0
+states checked against BA state 51 is: 0
+states checked against BA state 52 is: 0
+states checked against BA state 53 is: 0
+states checked against BA state 54 is: 0
+states checked against BA state 55 is: 0
+states checked against BA state 56 is: 0
+states checked against BA state 57 is: 0
+hash conflicts:    931595 (resolved)
+
+Stats on memory usage (in Megabytes):
+ 2936.630	equivalent memory usage for states (stored*(State-vector + overhead))
+ 2017.761	actual memory usage for states (compression: 68.71%)
+         	state-vector as stored = 497 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+    9.479	memory lost to fragmentation
+ 2136.835	total actual memory usage
+
+
+unreached in proctype User
+	giop3.nomig.pr:197, state 29, "printf('Request failed: user exception\n')"
+	giop3.nomig.pr:204, state 33, "printf('Request failed: object does not exist\n')"
+	(2 of 36 states)
+unreached in proctype GIOPClient
+	giop3.nomig.pr:308, state 36, "D_STEP308"
+	giop3.nomig.pr:312, state 37, "lout!Request,objRefs[reqId].port,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:399, state 86, "-end-"
+	(3 of 86 states)
+unreached in proctype Server
+	giop3.nomig.pr:435, state 7, "-end-"
+	(1 of 7 states)
+unreached in proctype GIOPAgent
+	giop3.nomig.pr:469, state 6, "registered[objKey] = clPort"
+	giop3.nomig.pr:513, state 23, "D_STEP513"
+	giop3.nomig.pr:522, state 29, "D_STEP522"
+	giop3.nomig.pr:511, state 30, "((registered[objKey]==255))"
+	giop3.nomig.pr:511, state 30, "else"
+	giop3.nomig.pr:531, state 32, "lout!Reply,clPort,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:620, state 75, "-end-"
+	(6 of 75 states)
+unreached in proctype transport
+	giop3.nomig.pr:720, state 37, "-end-"
+	(1 of 37 states)
+unreached in init
+	(0 of 12 states)
+unreached in claim never_0
+	./v6b.never:21, state 11, "assert(!((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))))"
+	./v6b.never:20, state 13, "(!((srequested[0]==1)))"
+	./v6b.never:20, state 13, "((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0))))"
+	./v6b.never:26, state 19, "assert(!((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))))"
+	./v6b.never:32, state 29, "assert(!((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0))))"
+	./v6b.never:32, state 33, "((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))"
+	./v6b.never:32, state 33, "(1)"
+	./v6b.never:38, state 39, "assert(!((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))))"
+	./v6b.never:44, state 49, "assert(!((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0))))"
+	./v6b.never:44, state 53, "((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))"
+	./v6b.never:44, state 53, "(1)"
+	./v6b.never:49, state 57, "-end-"
+	(9 of 57 states)
+
+pan: elapsed time 99.5 seconds
+pan: rate 65707.345 states/second
+
+
+/*without POR*/
+
+gcc -DNOREDUCE -o pan pan.c
+
+./pan -a
+
+/*result:*/
+Depth=     410 States=    1e+06 Transitions= 4.14e+06 Memory=   626.972	t=     21.2 R=   5e+04
+Depth=     410 States=    2e+06 Transitions= 8.34e+06 Memory=   886.542	t=     42.8 R=   5e+04
+Depth=     410 States=    3e+06 Transitions= 1.25e+07 Memory=   886.542	t=     64.3 R=   5e+04
+Depth=     410 States=    4e+06 Transitions= 1.82e+07 Memory=  1204.706	t=     93.2 R=   4e+04
+Depth=     410 States=    5e+06 Transitions= 2.42e+07 Memory=  1536.835	t=      123 R=   4e+04
+Depth=     410 States=    6e+06 Transitions=    3e+07 Memory=  1869.062	t=      153 R=   4e+04
+Depth=     410 States=    7e+06 Transitions= 3.59e+07 Memory=  2201.190	t=      183 R=   4e+04
+
+(Spin Version 6.4.3 -- 16 December 2014)
+
+Full statespace search for:
+	never claim         	+ (never_0)
+	assertion violations	+ (if within scope of claim)
+	acceptance   cycles 	+ (fairness disabled)
+	invalid end states	- (disabled by never claim)
+
+State-vector 736 byte, depth reached 410, errors: 0
+  4563267 states, stored (7.60544e+06 visited)
+ 32079108 states, matched
+ 39684552 transitions (= visited+matched)
+  4012474 atomic steps
+states checked against BA state 0 is: 0
+states checked against BA state 1 is: 0
+states checked against BA state 2 is: 0
+states checked against BA state 3 is: 0
+states checked against BA state 4 is: 0
+states checked against BA state 5 is: 1521090
+states checked against BA state 6 is: 0
+states checked against BA state 7 is: 0
+states checked against BA state 8 is: 0
+states checked against BA state 9 is: 0
+states checked against BA state 10 is: 0
+states checked against BA state 11 is: 0
+states checked against BA state 12 is: 0
+states checked against BA state 13 is: 0
+states checked against BA state 14 is: 0
+states checked against BA state 15 is: 0
+states checked against BA state 16 is: 0
+states checked against BA state 17 is: 0
+states checked against BA state 18 is: 0
+states checked against BA state 19 is: 0
+states checked against BA state 20 is: 0
+states checked against BA state 21 is: 0
+states checked against BA state 22 is: 0
+states checked against BA state 23 is: 0
+states checked against BA state 24 is: 0
+states checked against BA state 25 is: 3042178
+states checked against BA state 26 is: 0
+states checked against BA state 27 is: 0
+states checked against BA state 28 is: 0
+states checked against BA state 29 is: 0
+states checked against BA state 30 is: 0
+states checked against BA state 31 is: 0
+states checked against BA state 32 is: 0
+states checked against BA state 33 is: 0
+states checked against BA state 34 is: 0
+states checked against BA state 35 is: 0
+states checked against BA state 36 is: 0
+states checked against BA state 37 is: 0
+states checked against BA state 38 is: 0
+states checked against BA state 39 is: 0
+states checked against BA state 40 is: 0
+states checked against BA state 41 is: 0
+states checked against BA state 42 is: 0
+states checked against BA state 43 is: 0
+states checked against BA state 44 is: 0
+states checked against BA state 45 is: 3042176
+states checked against BA state 46 is: 0
+states checked against BA state 47 is: 0
+states checked against BA state 48 is: 0
+states checked against BA state 49 is: 0
+states checked against BA state 50 is: 0
+states checked against BA state 51 is: 0
+states checked against BA state 52 is: 0
+states checked against BA state 53 is: 0
+states checked against BA state 54 is: 0
+states checked against BA state 55 is: 0
+states checked against BA state 56 is: 0
+states checked against BA state 57 is: 0
+hash conflicts:   2574748 (resolved)
+
+Stats on memory usage (in Megabytes):
+ 3324.829	equivalent memory usage for states (stored*(State-vector + overhead))
+ 2284.533	actual memory usage for states (compression: 68.71%)
+         	state-vector as stored = 497 byte + 28 byte overhead
+  128.000	memory used for hash table (-w24)
+    0.534	memory used for DFS stack (-m10000)
+   10.723	memory lost to fragmentation
+ 2402.362	total actual memory usage
+
+
+unreached in proctype User
+	giop3.nomig.pr:197, state 29, "printf('Request failed: user exception\n')"
+	giop3.nomig.pr:204, state 33, "printf('Request failed: object does not exist\n')"
+	(2 of 36 states)
+unreached in proctype GIOPClient
+	giop3.nomig.pr:308, state 36, "D_STEP308"
+	giop3.nomig.pr:312, state 37, "lout!Request,objRefs[reqId].port,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:399, state 86, "-end-"
+	(3 of 86 states)
+unreached in proctype Server
+	giop3.nomig.pr:435, state 7, "-end-"
+	(1 of 7 states)
+unreached in proctype GIOPAgent
+	giop3.nomig.pr:469, state 6, "registered[objKey] = clPort"
+	giop3.nomig.pr:513, state 23, "D_STEP513"
+	giop3.nomig.pr:522, state 29, "D_STEP522"
+	giop3.nomig.pr:511, state 30, "((registered[objKey]==255))"
+	giop3.nomig.pr:511, state 30, "else"
+	giop3.nomig.pr:531, state 32, "lout!Reply,clPort,msg.mhdr.request_id,msg.mhdr.object_key,msg.mhdr.reply_status,msg.mhdr.forward_port,msg.mhdr.tag"
+	giop3.nomig.pr:620, state 75, "-end-"
+	(6 of 75 states)
+unreached in proctype transport
+	giop3.nomig.pr:720, state 37, "-end-"
+	(1 of 37 states)
+unreached in init
+	(0 of 12 states)
+unreached in claim never_0
+	./v6b.never:21, state 11, "assert(!((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))))"
+	./v6b.never:20, state 13, "(!((srequested[0]==1)))"
+	./v6b.never:20, state 13, "((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0))))"
+	./v6b.never:26, state 19, "assert(!((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))))"
+	./v6b.never:32, state 29, "assert(!((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0))))"
+	./v6b.never:32, state 33, "((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))"
+	./v6b.never:32, state 33, "(1)"
+	./v6b.never:38, state 39, "assert(!((!((srequested[0]==1))&&(((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))))"
+	./v6b.never:44, state 49, "assert(!((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0))))"
+	./v6b.never:44, state 53, "((((GIOPAgent[Pid[4]]._p==SReplyReceived)||(GIOPAgent[Pid[5]]._p==SReplyReceived))&&(sreply_reqId==0)))"
+	./v6b.never:44, state 53, "(1)"
+	./v6b.never:49, state 57, "-end-"
+	(9 of 57 states)
+
+pan: elapsed time 203 seconds
+pan: rate 37502.189 states/second

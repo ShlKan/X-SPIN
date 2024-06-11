@@ -1,0 +1,38 @@
+#define r0 (gTag == Pid[6] && (Server[Pid[8]]@UserProcessed))
+#define r1 (gTag == Pid[7] && (Server[Pid[8]]@UserProcessed))
+#define i0 (User[Pid[6]]@URequestSent)
+#define i1 (User[Pid[7]]@URequestSent)
+
+	/*
+	 * Formula As Typed: []  (( i0 && i1 && <> r0) ->  ( ! r1 U r0))
+	 * The Never Claim Below Corresponds
+	 * To The Negated Formula ! ([]  (( i0 && i1 && <> r0) -> X ( ! r1 U r0)))
+	 * (formalizing violations of the original)
+	 */
+
+never  {    /* ! ([]  (( i0 && i1 && <> r0) -> X  ( ! r1 U r0))) */
+T0_init @ :
+	do
+	:: ((i0) && (i1) && (r0)) -> goto accept_S9
+	:: ((i0) && (i1)) -> goto T0_S12
+	:: (1) -> goto T0_init
+	od;
+accept_S9 :
+	do
+	:: (! ((r0))) -> goto accept_S9
+	:: atomic { (! ((r0)) && (r1)) -> assert(!(! ((r0)) && (r1))) }
+	od;
+T0_S12 :
+	do
+	:: (! ((r0))) -> goto T0_S12
+	:: (! ((r0)) && (r1)) -> goto T0_S18
+	od;
+T0_S18 :
+	do
+	:: atomic { ((r0)) -> assert(!((r0))) }
+	:: (1) -> goto T0_S18
+	od;
+accept_all:
+	skip
+}
+
